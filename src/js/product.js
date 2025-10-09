@@ -8,16 +8,6 @@ const product = new ProductDetails(productId, dataSource);
 
 product.init();
 
-
-
-
-
-
-
-
-
-
-
 // function addProductToCart(product) {
 //   const cartItems = getLocalStorage("so-cart") || []; // get cart array of items from local storage if null set to empty array
 //   cartItems.push(product);
@@ -33,4 +23,3 @@ product.init();
 // document
 //   .getElementById("addToCart")
 //   .addEventListener("click", addToCartHandler);
-
