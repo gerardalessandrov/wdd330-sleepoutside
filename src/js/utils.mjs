@@ -32,3 +32,17 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position="afterbegin",
+  clear=false
+){
+  const htmlStrings =list.map(templateFn)
+  const combinedHtml=htmlStrings.join('');
+  if(clear){
+    parentElement.innerHTML='';
+  }
+  parentElement.insertAdjacentHTML(position,combinedHtml);
+}
