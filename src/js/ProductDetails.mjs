@@ -1,18 +1,23 @@
-export default class ProductData {
+
+export default class ProductDetails {
   constructor(productId,dataSource) {
   this.productId = productId;
   this.product = {};
   this.dataSource = dataSource;
-
+  
   }
   async init() {
-    this.product =await this.dataSource.findProductById(this.productId);
-    // Primero inicia buscando el id del producto
+  try {
+    this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails();
-    // Ahora habilita esta funcion y muestra los detalles del producto
     document.getElementById("addToCart").
-    addEventListener("click",this.addProductToCart.bind(this));
+      addEventListener("click", this.addProductToCart.bind(this));
+  } catch (error) {
+    console.error("Error al cargar o renderizar el producto:", error);
+    // Mostrar un mensaje de error al usuario en el contenedor del producto.
+    document.querySelector(".product-detail").innerHTML = '<h2>Producto no encontrado o error de carga.</h2>';
   }
+}
   addProductToCart() {
   let cart = JSON.parse(localStorage.getItem('so-cart')) || [];
   cart.push(this.product);
