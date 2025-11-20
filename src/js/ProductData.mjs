@@ -9,8 +9,8 @@ function convertToJson(res) {
 export default class ProductData {
   constructor(category) {
     this.category = category;
-    this.path = `../json/${this.category}.json`;
-  }
+ // La ruta DEBE empezar con /src/
+this.path = `/src/public/json/${this.category}.json`; }
   getData() {
     return fetch(this.path)
       .then(convertToJson)

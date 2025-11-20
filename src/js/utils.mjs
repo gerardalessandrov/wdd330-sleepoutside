@@ -8,8 +8,17 @@ export function qs(selector, parent = document) {
 // retrieve data from localstorage
 // utils.mjs
 export function getLocalStorage(key) {
-  const data = localStorage.getItem(key);
-  return data ? JSON.parse(data) : null;
+    const data = localStorage.getItem(key);
+    if (!data) {
+        return null;
+    }
+    try {
+        return JSON.parse(data);
+    } catch (e) {
+        console.error("Error parsing data from localStorage for key:", key, e);
+        // Retorna null o un valor seguro para que el resto del código pueda continuar
+        return null; 
+    }
 }
 
 export function setLocalStorage(key, data) {
