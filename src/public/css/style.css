@@ -310,7 +310,10 @@ footer {
 .cart:hover svg {
   animation: cartBounce 0.5s ease;
 }
-
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease-in forwards;
+}
 /* Loading spinner */
 @keyframes spin {
   to { transform: rotate(360deg); }
@@ -324,4 +327,14 @@ footer {
   height: 40px;
   animation: spin 1s linear infinite;
   margin: 20px auto;
+}
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
