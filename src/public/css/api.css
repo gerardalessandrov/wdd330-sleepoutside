@@ -1,0 +1,222 @@
+/* ==================================== */
+/* 0. Configuración General (Reset) */
+/* ==================================== */
+
+:root {
+    --primary-color: #2c3e50; /* Azul oscuro/gris para el fondo y texto principal */
+    --secondary-color: #3498db; /* Azul vibrante para botones y acentos */
+    --accent-color: #e74c3c; /* Rojo para errores o advertencias */
+    --background-light: #ecf0f1; /* Fondo claro general */
+    --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-stack);
+    background-color: var(--background-light);
+    color: var(--primary-color);
+    line-height: 1.6;
+}
+
+/* ==================================== */
+/* 1. Encabezado y Pie de Página */
+/* ==================================== */
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.2em;
+    margin: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    border-top: 1px solid #bdc3c7;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+/* ==================================== */
+/* 2. Contenedor Principal (Main) */
+/* ==================================== */
+
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #bdc3c7;
+    margin: 40px 0;
+}
+
+/* ==================================== */
+/* 3. Formularios y Botones */
+/* ==================================== */
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #2980b9; /* Tono más oscuro al pasar el ratón */
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* ==================================== */
+/* 4. Sección de Películas (TMDB Results) */
+/* ==================================== */
+
+#movie-results {
+    padding-top: 20px;
+    min-height: 150px; /* Evita saltos de diseño */
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column; /* Móvil primero */
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #f8f9f9;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+}
+
+#movie-poster {
+    width: 100%;
+    max-width: 250px; /* Límite para el póster */
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.movie-info {
+    flex-grow: 1;
+}
+
+.movie-info h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.movie-info strong {
+    color: var(--secondary-color);
+}
+
+/* Media Query para escritorio/tablet: cambia a diseño de dos columnas */
+@media (min-width: 768px) {
+    .movie-card {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    #movie-poster {
+        width: 200px; /* Ancho fijo en escritorio */
+        flex-shrink: 0;
+    }
+}
+
+/* Estilo para mensajes de error */
+p.error {
+    color: var(--accent-color);
+    font-weight: bold;
+    padding: 10px;
+    border: 1px dashed var(--accent-color);
+    border-radius: 4px;
+    background-color: #fceae9;
+}
+
+/* ==================================== */
+/* 5. Sección de Chistes (JokeAPI) */
+/* ==================================== */
+
+#joke-container {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #ecf0f1;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#current-joke {
+    font-size: 1.2em;
+    font-style: italic;
+    color: var(--primary-color);
+    margin: 0;
+}
+/* Animación de spin para el estado de carga */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilo para el estado de carga */
+#movie-results p:first-child:contains("Cargando") {
+    /* Aquí necesitarías un ícono o emoji, pero como texto: */
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--secondary-color);
+}

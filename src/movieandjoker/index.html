@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"> y <meta name="Gerard Vigo">
+    <title>Movie & Joke Mixer</title>
+    <link rel="stylesheet" href="../public/css/api.css"> 
+
+</head>
+<body>
+
+    <header>
+        <h1>🎬 Movie & Joke Mixer 😂</h1>
+    </header>
+
+    <main>
+        
+        <section id="movie-search-section">
+            <h2>🔎 Busca una Película</h2>
+            <div class="search-form">
+                <input type="text" id="movie-title-input" placeholder="Escribe el título de la película...">
+                <button id="search-movie-btn">Buscar</button>
+            </div>
+            
+            <div id="movie-results">
+                <p>Usa la barra de búsqueda para encontrar información de películas.</p>
+                
+                </div>
+        </section>
+
+        <hr>
+
+        <section id="joke-section">
+            <h2>🤣 Chiste del Día</h2>
+            <button id="get-joke-btn">Dame un Chiste</button>
+            
+            <div id="joke-container">
+                <p id="current-joke">¡Presiona el botón para reírte un rato!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Proyecto WDD 330 | Powered by TMDB y JokeAPI</p>
+    </footer>
+
+    <script src="../public/js/main.js"></script>
+</body>
+</html>

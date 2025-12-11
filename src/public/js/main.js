@@ -1,8 +1,12 @@
 import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
 import APIManager from './APIManager.mjs'; // ⬅️ ¡Nuevo import para las APIs externas!
-
+import { buscarPelicula } from './TmdbService.js';
+import { obtenerChiste } from './JokeService.js';
 // --- 1. Lógica de la Lista de Productos (Datos Locales) ---
+const inputPelicula = document.getElementById('movie-title-input');
+const botonBusqueda = document.getElementById('search-movie-btn');
+const botonChiste = document.getElementById('get-joke-btn');
 const dataSource = new ProductData("tents");
 const listElement = document.querySelector(".product-list");
 
@@ -14,7 +18,12 @@ if (listElement) {
     console.warn('⚠️ Element .product-list not found. Assuming this is a different page.'); 
 }
 
-
+botonBusqueda.addEventListener('click', () => {
+    const tituloBusqueda = inputPelicula.value; 
+    // Llamamos a la función importada.
+    buscarPelicula(tituloBusqueda);
+});
+botonChiste.addEventListener('click', obtenerChiste); // Llamamos a la función importada.
 // --- 2. Lógica de las APIs Externas (Requisito del Proyecto) ---
 const apiManager = new APIManager();
 
